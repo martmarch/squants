@@ -330,5 +330,7 @@ object EnergyConversions {
     def toEnergy = Energy(s)
   }
 
-  implicit object EnergyNumeric extends AbstractQuantityNumeric[Energy](Energy.primaryUnit)
+  implicit object EnergyNumeric extends AbstractQuantityNumeric[Energy](Energy.primaryUnit) {
+    def parseString(str: String): Option[Energy] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

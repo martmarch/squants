@@ -22,10 +22,10 @@ class SecondTimeDerivativeSpec extends FlatSpec with Matchers with CustomMatcher
 
   behavior of "Second Time Derivatives and Integrals as implemented in Distance and Acceleration"
 
-  it should "satisfy Derivative^2 = Integral / TimeSquared" in {
-    MetersPerSecondSquared(55) should be(Meters(55) / SecondsSquared(1))
-    MetersPerSecondSquared(55) should be(Meters(55) per SecondsSquared(1))
-  }
+//  it should "satisfy Derivative^2 = Integral / TimeSquared" in {
+//    MetersPerSecondSquared(55) should be(Meters(55) / SecondsSquared(1))
+//    MetersPerSecondSquared(55) should be(Meters(55) per SecondsSquared(1))
+//  }
 
   it should "satisfy Integral = Derivative^2 * TimeSquared" in {
     Meters(55) should be(MetersPerSecondSquared(55) * SecondsSquared(1))

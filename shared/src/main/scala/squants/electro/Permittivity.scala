@@ -44,5 +44,7 @@ object PermittivityConversions {
     def faradsPerMeter = FaradsPerMeter(n)
   }
 
-  implicit object PermittivityNumeric extends AbstractQuantityNumeric[Permittivity](Permittivity.primaryUnit)
+  implicit object PermittivityNumeric extends AbstractQuantityNumeric[Permittivity](Permittivity.primaryUnit) {
+    def parseString(str: String): Option[Permittivity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

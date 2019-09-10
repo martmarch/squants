@@ -59,5 +59,7 @@ object MagneticFluxConversions {
     def webers = Webers(n)
   }
 
-  implicit object MagneticFluxNumeric extends AbstractQuantityNumeric[MagneticFlux](MagneticFlux.primaryUnit)
+  implicit object MagneticFluxNumeric extends AbstractQuantityNumeric[MagneticFlux](MagneticFlux.primaryUnit) {
+    def parseString(str: String): Option[MagneticFlux] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

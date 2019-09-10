@@ -88,5 +88,7 @@ object ElectricCurrentConversions {
   }
 
   implicit object ElectricCurrentNumeric
-    extends AbstractQuantityNumeric[ElectricCurrent](ElectricCurrent.primaryUnit)
+    extends AbstractQuantityNumeric[ElectricCurrent](ElectricCurrent.primaryUnit) {
+    def parseString(str: String): Option[ElectricCurrent] = sys.error("ElectricCurrentNumeric parseString not implemented")
+  }
 }

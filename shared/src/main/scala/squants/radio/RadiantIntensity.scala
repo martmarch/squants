@@ -57,6 +57,8 @@ object RadiantIntensityConversions {
     def wattsPerSteradian = WattsPerSteradian(n)
   }
 
-  implicit object RadiantIntensityNumeric extends AbstractQuantityNumeric[RadiantIntensity](RadiantIntensity.primaryUnit)
+  implicit object RadiantIntensityNumeric extends AbstractQuantityNumeric[RadiantIntensity](RadiantIntensity.primaryUnit) {
+    def parseString(str: String): Option[RadiantIntensity] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

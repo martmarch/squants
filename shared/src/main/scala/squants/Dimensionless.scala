@@ -146,5 +146,7 @@ object DimensionlessConversions {
      * @return
      */
     override def times(x: Dimensionless, y: Dimensionless) = x * y
+
+    def parseString(str: String): Option[Dimensionless] = sys.error("DemensionlessNumeric parseString not implemented")
   }
 }

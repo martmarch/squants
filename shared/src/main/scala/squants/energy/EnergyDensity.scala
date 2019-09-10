@@ -53,5 +53,7 @@ object EnergyDensityConversions {
     def joulesPerCubicMeter = JoulesPerCubicMeter(n)
   }
 
-  implicit object EnergyDensityNumeric extends AbstractQuantityNumeric[EnergyDensity](EnergyDensity.primaryUnit)
+  implicit object EnergyDensityNumeric extends AbstractQuantityNumeric[EnergyDensity](EnergyDensity.primaryUnit) {
+    def parseString(str: String): Option[EnergyDensity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

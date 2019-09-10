@@ -56,5 +56,7 @@ object YankConversions {
     def newtonsPerSecond = NewtonsPerSecond(n)
   }
 
-  implicit object YankNumeric extends AbstractQuantityNumeric[Yank](Yank.primaryUnit)
+  implicit object YankNumeric extends AbstractQuantityNumeric[Yank](Yank.primaryUnit) {
+    def parseString(str: String): Option[Yank] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

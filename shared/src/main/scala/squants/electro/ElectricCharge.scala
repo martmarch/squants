@@ -128,5 +128,7 @@ object ElectricChargeConversions {
   }
 
   implicit object ElectricalChargeNumeric
-    extends AbstractQuantityNumeric[ElectricCharge](ElectricCharge.primaryUnit)
+    extends AbstractQuantityNumeric[ElectricCharge](ElectricCharge.primaryUnit) {
+    def parseString(str: String): Option[ElectricCharge] = sys.error("ElectricalChargeNumeric parseString not implemented")
+  }
 }

@@ -22,8 +22,8 @@ import squants.time.{ Seconds, _ }
  */
 final class Velocity private (val value: Double, val unit: VelocityUnit)
     extends Quantity[Velocity]
-    with TimeIntegral[Acceleration]
-    with SecondTimeIntegral[Jerk]
+//    with TimeIntegral[Acceleration]
+//    with SecondTimeIntegral[Jerk]
     with TimeDerivative[Length] {
 
   def dimension = Velocity
@@ -34,8 +34,8 @@ final class Velocity private (val value: Double, val unit: VelocityUnit)
 
   def *(that: Mass): Momentum = NewtonSeconds(this.toMetersPerSecond * that.toKilograms)
 
-  def /(that: TimeSquared): Jerk = this / that.time1 / that.time2
-  def /(that: Jerk): TimeSquared = (this / that.timeIntegrated) * this.time
+  def /(that: TimeSquared): Jerk = sys.error("Velocity / not implemented")
+  def /(that: Jerk): TimeSquared = sys.error("Velocity /not implemented")
 
   def toFeetPerSecond = to(FeetPerSecond)
   def toMillimetersPerSecond = to(MillimetersPerSecond)
@@ -119,5 +119,7 @@ object VelocityConversions {
     def knots = Knots(n)
   }
 
-  implicit object VelocityNumeric extends AbstractQuantityNumeric[Velocity](Velocity.primaryUnit)
+  implicit object VelocityNumeric extends AbstractQuantityNumeric[Velocity](Velocity.primaryUnit) {
+    def parseString(str: String): Option[Velocity] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

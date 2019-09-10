@@ -105,5 +105,7 @@ object PressureConversions {
     def torr    = Torrs(n)
   }
 
-  implicit object PressureNumeric extends AbstractQuantityNumeric[Pressure](Pressure.primaryUnit)
+  implicit object PressureNumeric extends AbstractQuantityNumeric[Pressure](Pressure.primaryUnit) {
+    def parseString(str: String): Option[Pressure] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

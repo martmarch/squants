@@ -83,5 +83,7 @@ object InductanceConversions {
     def picohenry = Picohenry(n)
   }
 
-  implicit object InductanceNumeric extends AbstractQuantityNumeric[Inductance](Inductance.primaryUnit)
+  implicit object InductanceNumeric extends AbstractQuantityNumeric[Inductance](Inductance.primaryUnit) {
+    def parseString(str: String): Option[Inductance] = sys.error("InductanceNumeric parseString not implemented")
+  }
 }

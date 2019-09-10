@@ -69,5 +69,7 @@ object MomentOfInertiaConversions {
     def poundSquareFeet(implicit num: Numeric[A]) = PoundsSquareFeet(n)
   }
 
-  implicit object MomentOfInertiaNumeric extends AbstractQuantityNumeric[MomentOfInertia](MomentOfInertia.primaryUnit)
+  implicit object MomentOfInertiaNumeric extends AbstractQuantityNumeric[MomentOfInertia](MomentOfInertia.primaryUnit) {
+    def parseString(str: String): Option[MomentOfInertia] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

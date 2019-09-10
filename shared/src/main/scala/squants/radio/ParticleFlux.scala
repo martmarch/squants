@@ -74,5 +74,7 @@ object ParticleFluxConversions {
   }
 
   implicit object ParticleFluxNumeric 
-      extends AbstractQuantityNumeric[ParticleFlux](ParticleFlux.primaryUnit)
+      extends AbstractQuantityNumeric[ParticleFlux](ParticleFlux.primaryUnit) {
+    def parseString(str: String): Option[ParticleFlux] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

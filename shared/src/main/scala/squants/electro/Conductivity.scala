@@ -52,5 +52,7 @@ object ConductivityConversions {
     def siemensPerMeter = SiemensPerMeter(n)
   }
 
-  implicit object ConductivityNumeric extends AbstractQuantityNumeric[Conductivity](Conductivity.primaryUnit)
+  implicit object ConductivityNumeric extends AbstractQuantityNumeric[Conductivity](Conductivity.primaryUnit) {
+    def parseString(str: String): Option[Conductivity] = sys.error("ConductivityNumeric parseString not implemented")
+  }
 }

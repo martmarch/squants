@@ -51,5 +51,7 @@ object DensityConversions {
     def kilogramsPerCubicMeter = KilogramsPerCubicMeter(n)
   }
 
-  implicit object DensityNumeric extends AbstractQuantityNumeric[Density](KilogramsPerCubicMeter)
+  implicit object DensityNumeric extends AbstractQuantityNumeric[Density](KilogramsPerCubicMeter) {
+    def parseString(str: String): Option[Density] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

@@ -57,5 +57,7 @@ object TorqueConversions {
     def poundFeet(implicit num: Numeric[A]) = PoundFeet(n)
   }
 
-  implicit object TorqueNumeric extends AbstractQuantityNumeric[Torque](Torque.primaryUnit)
+  implicit object TorqueNumeric extends AbstractQuantityNumeric[Torque](Torque.primaryUnit) {
+    def parseString(str: String): Option[Torque] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

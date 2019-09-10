@@ -23,14 +23,15 @@ import squants.time.{ SecondTimeDerivative, Seconds, TimeDerivative, TimeSquared
 final class Jerk private (val value: Double, val unit: JerkUnit)
     extends Quantity[Jerk]
     with TimeDerivative[Acceleration]
-    with SecondTimeDerivative[Velocity] {
+//    with SecondTimeDerivative[Velocity]
+      {
 
   def dimension = Jerk
 
   protected[squants] def timeIntegrated = MetersPerSecondSquared(toMetersPerSecondCubed)
   protected[squants] def time = Seconds(1)
 
-  def *(that: TimeSquared): Velocity = this * that.time1 * that.time2
+  def *(that: TimeSquared): Velocity = sys.error("Jerk * TimeSquared not implemented")
 
   def toMetersPerSecondCubed = to(MetersPerSecondCubed)
   def toFeetPerSecondCubed = to(FeetPerSecondCubed)
@@ -66,5 +67,7 @@ object JerkConversions {
     def feetPerSecondCubed = FeetPerSecondCubed(n)
   }
 
-  implicit object JerkNumeric extends AbstractQuantityNumeric[Jerk](Jerk.primaryUnit)
+  implicit object JerkNumeric extends AbstractQuantityNumeric[Jerk](Jerk.primaryUnit) {
+    def parseString(str: String): Option[Jerk] = sys.error("Jerk parseString not implemented")
+  }
 }

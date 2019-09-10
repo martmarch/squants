@@ -95,6 +95,8 @@ object ElectricPotentialConversions {
     def megavolts = Megavolts(n)
   }
 
-  implicit object ElectricPotentialNumeric extends AbstractQuantityNumeric[ElectricPotential](ElectricPotential.primaryUnit)
+  implicit object ElectricPotentialNumeric extends AbstractQuantityNumeric[ElectricPotential](ElectricPotential.primaryUnit) {
+    def parseString(str: String): Option[ElectricPotential] = sys.error("ElectricPotentialNumeric parseString not implemented")
+  }
 }
 

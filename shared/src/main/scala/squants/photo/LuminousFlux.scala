@@ -59,5 +59,7 @@ object LuminousFluxConversions {
     def lumens = Lumens(n)
   }
 
-  implicit object LuminousFluxNumeric extends AbstractQuantityNumeric[LuminousFlux](LuminousFlux.primaryUnit)
+  implicit object LuminousFluxNumeric extends AbstractQuantityNumeric[LuminousFlux](LuminousFlux.primaryUnit) {
+    def parseString(str: String): Option[LuminousFlux] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

@@ -52,5 +52,7 @@ object PowerDensityConversions {
     def wattsPerCubicMeter = WattsPerCubicMeter(n)
   }
 
-  implicit object PowerDensityNumeric extends AbstractQuantityNumeric[PowerDensity](PowerDensity.primaryUnit)
+  implicit object PowerDensityNumeric extends AbstractQuantityNumeric[PowerDensity](PowerDensity.primaryUnit) {
+    def parseString(str: String): Option[PowerDensity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

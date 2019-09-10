@@ -313,5 +313,7 @@ object VolumeConversions {
     def acreFeet = AcreFeet(n)
   }
 
-  implicit object VolumeNumeric extends AbstractQuantityNumeric[Volume](Volume.primaryUnit)
+  implicit object VolumeNumeric extends AbstractQuantityNumeric[Volume](Volume.primaryUnit) {
+    def parseString(str: String): Option[Volume] = sys.error("VolumeNumeric parseString not implemented")
+  }
 }

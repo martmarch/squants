@@ -302,6 +302,8 @@ object MassConversions {
     def toMass = Mass(s)
   }
 
-  implicit object MassNumeric extends AbstractQuantityNumeric[Mass](Mass.primaryUnit)
+  implicit object MassNumeric extends AbstractQuantityNumeric[Mass](Mass.primaryUnit) {
+    def parseString(str: String): Option[Mass] = sys.error("MassNumeric parseString")
+  }
 }
 

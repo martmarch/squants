@@ -94,5 +94,7 @@ object VolumeFlowConversions {
     def gallonsPerSecond = GallonsPerSecond(n)
   }
 
-  implicit object VolumeFlowNumeric extends AbstractQuantityNumeric[VolumeFlow](CubicMetersPerSecond)
+  implicit object VolumeFlowNumeric extends AbstractQuantityNumeric[VolumeFlow](CubicMetersPerSecond) {
+    def parseString(str: String): Option[VolumeFlow] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

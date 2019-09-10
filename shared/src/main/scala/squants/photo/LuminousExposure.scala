@@ -53,5 +53,7 @@ object LuminousExposureConversions {
     def luxSeconds = LuxSeconds(n)
   }
 
-  implicit object LuminousExposureNumeric extends AbstractQuantityNumeric[LuminousExposure](LuminousExposure.primaryUnit)
+  implicit object LuminousExposureNumeric extends AbstractQuantityNumeric[LuminousExposure](LuminousExposure.primaryUnit) {
+    def parseString(str: String): Option[LuminousExposure] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

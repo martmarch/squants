@@ -100,6 +100,8 @@ object ForceConversions {
     def megaElectronVoltsPerCentimeter = MegaElectronVoltsPerCentimeter(n)
   }
 
-  implicit object ForceNumeric extends AbstractQuantityNumeric[Force](Force.primaryUnit)
+  implicit object ForceNumeric extends AbstractQuantityNumeric[Force](Force.primaryUnit) {
+    def parseString(str: String): Option[Force] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }
 

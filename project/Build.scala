@@ -7,20 +7,20 @@ import com.typesafe.sbt.osgi.SbtOsgi
 import com.typesafe.sbt.osgi.SbtOsgi.autoImport._
 
 object Versions {
-  val Squants = "1.4.0"
-  val Scala = "2.11.12" // Don't use 2.12 yet to avoid troubles with native
+  val Squants = "1.6.0"
+  val Scala = "2.12.8" // Don't use 2.12 yet to avoid troubles with native
   val scalaJSVersion =
-    Option(System.getenv("SCALAJS_VERSION")).getOrElse("0.6.25")
+    Option(System.getenv("SCALAJS_VERSION")).getOrElse("0.6.28")
   val ScalaCross =
     if (scalaJSVersion.startsWith("0.6")) {
-      Seq("2.10.7", "2.11.12", "2.12.7")
+      Seq("2.10.7", "2.11.12", "2.12.7", "2.12.8", "2.13.0")
     } else {
-      Seq("2.11.12", "2.12.7")
+      Seq("2.11.12", "2.12.7", "2.12.8", "2.13.0")
     }
 
-  val ScalaTest = "3.0.5"
-  val ScalaCheck = "1.13.5"
-  val Json4s = "3.6.1"
+  val ScalaTest = "3.0.8"
+  val ScalaCheck = "1.14.0"
+  val Json4s = "3.6.6"
 }
 
 object Dependencies {
@@ -79,8 +79,8 @@ object Compiler {
       "-Xfatal-warnings",
       "-unchecked",
       "-Xfuture",
-      "-Ywarn-dead-code",
-      "-Yno-adapted-args"
+      "-Ywarn-dead-code"
+//      "-Yno-adapted-args"
     ),
 
     scalacOptions ++= PartialFunction.condOpt(CrossVersion.partialVersion(scalaVersion.value)){
@@ -92,36 +92,6 @@ object Compiler {
     crossScalaVersions := Versions.ScalaCross
   )
 }
-object Publish {
-  val defaultSettings = Seq(
-    publishTo := {
-      val nexus = "https://oss.sonatype.org/"
-      if (isSnapshot.value)
-        Some("snapshots" at nexus + "content/repositories/snapshots")
-      else
-        Some("releases" at nexus + "service/local/staging/deploy/maven2")
-    },
-
-    publishMavenStyle := true,
-
-    publishArtifact in Test := false,
-
-    pomIncludeRepository := { _ => false },
-
-    pomExtra := <scm>
-      <url>git@github.com:typelevel/squants.git</url>
-      <connection>scm:git:git@github.com:typelevel/squants.git</connection>
-    </scm>
-      <developers>
-        <developer>
-          <id>garyKeorkunian</id>
-          <name>Gary Keorkunian</name>
-          <url>http://www.linkedin.com/in/garykeorkunian</url>
-        </developer>
-      </developers>
-  )
-}
-
 object Tests {
   val defaultSettings =
     if (Versions.scalaJSVersion.startsWith("0.6")) {

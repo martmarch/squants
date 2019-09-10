@@ -69,6 +69,8 @@ object DoseConversions {
     def rems = Rems(n)
   }
 
-  implicit object DoseNumeric extends AbstractQuantityNumeric[Dose](Dose.primaryUnit)
+  implicit object DoseNumeric extends AbstractQuantityNumeric[Dose](Dose.primaryUnit) {
+    def parseString(str: String): Option[Dose] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

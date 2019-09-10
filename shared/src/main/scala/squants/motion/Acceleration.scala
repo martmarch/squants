@@ -22,8 +22,8 @@ import squants.time.{ Seconds, TimeDerivative, TimeIntegral, SecondTimeDerivativ
  */
 final class Acceleration private (val value: Double, val unit: AccelerationUnit)
     extends Quantity[Acceleration]
-    with TimeDerivative[Velocity]
-    with SecondTimeDerivative[Length]
+//    with TimeDerivative[Velocity]
+//    with SecondTimeDerivative[Length]
     with TimeIntegral[Jerk] {
 
   def dimension = Acceleration
@@ -33,7 +33,7 @@ final class Acceleration private (val value: Double, val unit: AccelerationUnit)
   protected[squants] def time = Seconds(1)
 
   def *(that: Mass): Force = Newtons(this.toMetersPerSecondSquared * that.toKilograms)
-  def *(that: TimeSquared): Length = this * that.time1 * that.time2
+  def *(that: TimeSquared): Length = null
 
   def toFeetPerSecondSquared = to(FeetPerSecondSquared)
   def toMillimetersPerSecondSquared = to(MillimetersPerSecondSquared)
@@ -43,19 +43,20 @@ final class Acceleration private (val value: Double, val unit: AccelerationUnit)
 
   def analyze(distance: Length): (Time, Velocity) = {
     val timeToDistance = (distance * 2 / this).squareRoot
-    val finalVelocity = this * timeToDistance
-    (timeToDistance, finalVelocity)
+//    val finalVelocity = this * timeToDistance
+    (timeToDistance, null)
   }
   def analyze(accelerationTime: Time): (Length, Velocity) = {
-    val finalVelocity = this * accelerationTime
+    val finalVelocity = null
     val distance = this * accelerationTime.squared * 0.5
     (distance, finalVelocity)
   }
-  def analyze(velocity: Velocity): (Time, Length) = {
-    val timeToVelocity = velocity / this
-    val distance = this * timeToVelocity.squared * 0.5
-    (timeToVelocity, distance)
-  }
+  def analyze(velocity: Velocity): (Time, Length) = sys.error("Acceleration analyze not implemented")
+//  {
+//    val timeToVelocity = velocity / this
+//    val distance = this * timeToVelocity.squared * 0.5
+//    (timeToVelocity, distance)
+//  }
 }
 
 object Acceleration extends Dimension[Acceleration] {
@@ -113,5 +114,7 @@ object AccelerationConversions {
     def fpss = FeetPerSecondSquared(n)
   }
 
-  implicit object AccelerationNumeric extends AbstractQuantityNumeric[Acceleration](Acceleration.primaryUnit)
+  implicit object AccelerationNumeric extends AbstractQuantityNumeric[Acceleration](Acceleration.primaryUnit) {
+    def parseString(str: String): Option[Acceleration] = null
+  }
 }

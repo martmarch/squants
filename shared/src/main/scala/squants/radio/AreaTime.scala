@@ -68,5 +68,7 @@ object AreaTimeConversions {
     def squareCentimeterSeconds = SquareCentimeterSeconds(n)
   }
 
-  implicit object AreaTimeNumeric extends AbstractQuantityNumeric[AreaTime](AreaTime.primaryUnit)
+  implicit object AreaTimeNumeric extends AbstractQuantityNumeric[AreaTime](AreaTime.primaryUnit) {
+    def parseString(str: String): Option[AreaTime] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

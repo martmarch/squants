@@ -55,5 +55,7 @@ object ThermalCapacityConversions {
     def joulesPerKelvin = JoulesPerKelvin(n)
   }
 
-  implicit object ThermalCapacityNumeric extends AbstractQuantityNumeric[ThermalCapacity](ThermalCapacity.primaryUnit)
+  implicit object ThermalCapacityNumeric extends AbstractQuantityNumeric[ThermalCapacity](ThermalCapacity.primaryUnit) {
+    def parseString(str: String): Option[ThermalCapacity] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

@@ -110,5 +110,7 @@ object AngleConversions {
     def arcseconds = Arcseconds(n)
   }
 
-  implicit object AngleNumeric extends AbstractQuantityNumeric[Angle](Angle.primaryUnit)
+  implicit object AngleNumeric extends AbstractQuantityNumeric[Angle](Angle.primaryUnit) {
+    def parseString(str: String): Option[Angle] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

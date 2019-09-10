@@ -3,13 +3,13 @@ import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 lazy val defaultSettings =
   Project.defaultSettings ++
   Compiler.defaultSettings ++
-  Publish.defaultSettings ++
+//  Publish.defaultSettings ++
   Formatting.defaultSettings ++
   Console.defaultSettings ++
   Docs.defaultSettings
 
 lazy val squants =
-  crossProject(JSPlatform, JVMPlatform, NativePlatform)
+  crossProject(JSPlatform, JVMPlatform)
   .crossType(CrossType.Full)
   .in(file("."))
   .settings(defaultSettings: _*)
@@ -36,4 +36,4 @@ lazy val root = project.in(file("."))
     publishLocal := {},
     publishArtifact := false
   )
-  .aggregate(squants.jvm, squants.js, squants.native)
+  .aggregate(squants.jvm, squants.js)

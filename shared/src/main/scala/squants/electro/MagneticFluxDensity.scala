@@ -58,5 +58,7 @@ object MagneticFluxDensityConversions {
     def gauss = Gauss(n)
   }
 
-  implicit object MagneticFluxDensistyNumeric extends AbstractQuantityNumeric[MagneticFluxDensity](MagneticFluxDensity.primaryUnit)
+  implicit object MagneticFluxDensistyNumeric extends AbstractQuantityNumeric[MagneticFluxDensity](MagneticFluxDensity.primaryUnit) {
+    def parseString(str: String): Option[MagneticFluxDensity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

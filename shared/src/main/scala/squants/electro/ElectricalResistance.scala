@@ -102,5 +102,7 @@ object ElectricalResistanceConversions {
   }
 
   implicit object ElectricalResistanceNumeric
-    extends AbstractQuantityNumeric[ElectricalResistance](ElectricalResistance.primaryUnit)
+    extends AbstractQuantityNumeric[ElectricalResistance](ElectricalResistance.primaryUnit) {
+    def parseString(str: String): Option[ElectricalResistance] = sys.error("ElectricalResistanceNumeric parseString not implemented")
+  }
 }

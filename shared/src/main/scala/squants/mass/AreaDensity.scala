@@ -81,5 +81,7 @@ object AreaDensityConversions {
     def gramsPerSquareCentimeter = GramsPerSquareCentimeter(n)
   }
 
-  implicit object AreaDensityNumeric extends AbstractQuantityNumeric[AreaDensity](AreaDensity.primaryUnit)
+  implicit object AreaDensityNumeric extends AbstractQuantityNumeric[AreaDensity](AreaDensity.primaryUnit) {
+    def parseString(str: String): Option[AreaDensity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

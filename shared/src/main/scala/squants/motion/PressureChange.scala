@@ -77,5 +77,7 @@ object PressureChangeConversions {
     def standardAtmospheresPerSecond = StandardAtmospheresPerSecond(n)
   }
 
-  implicit object PressureChangeNumeric extends AbstractQuantityNumeric[PressureChange](PressureChange.primaryUnit)
+  implicit object PressureChangeNumeric extends AbstractQuantityNumeric[PressureChange](PressureChange.primaryUnit) {
+    def parseString(str: String): Option[PressureChange] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

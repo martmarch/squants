@@ -45,5 +45,7 @@ object AreaElectricChargeDensityConversions {
     def coulombsPerSquareMeter = CoulombsPerSquareMeter(n)
   }
 
-  implicit object AreaElectricChargeDensityNumeric extends AbstractQuantityNumeric[AreaElectricChargeDensity](AreaElectricChargeDensity.primaryUnit)
+  implicit object AreaElectricChargeDensityNumeric extends AbstractQuantityNumeric[AreaElectricChargeDensity](AreaElectricChargeDensity.primaryUnit) {
+    def parseString(str: String): Option[AreaElectricChargeDensity] = sys.error("AreaElectricChargeDensityNumeric parseString not implemented")
+  }
 }

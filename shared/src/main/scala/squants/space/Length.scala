@@ -10,10 +10,10 @@ package squants.space
 
 import squants._
 import squants.electro._
-import squants.energy.{ Joules, Watts }
-import squants.motion.{ MetersPerSecond, Velocity }
-import squants.radio.{ RadiantIntensity, SpectralIntensity, SpectralPower, WattsPerSteradian }
-import squants.time.{ SecondTimeIntegral, TimeIntegral, TimeSquared }
+import squants.energy.{Joules, Watts}
+import squants.motion.{Acceleration, MetersPerSecond, Velocity}
+import squants.radio.{RadiantIntensity, SpectralIntensity, SpectralPower, WattsPerSteradian}
+import squants.time.{SecondTimeIntegral, TimeIntegral, TimeSquared}
 
 /**
  * Represents a quantity of length
@@ -26,8 +26,8 @@ import squants.time.{ SecondTimeIntegral, TimeIntegral, TimeSquared }
 final class Length private (val value: Double, val unit: LengthUnit)
     extends Quantity[Length]
     with TimeIntegral[Velocity]
-    with SecondTimeIntegral[Acceleration] {
-
+//    with SecondTimeIntegral[Length] {
+{
   def dimension = Length
 
   protected def timeDerived = MetersPerSecond(toMeters)
@@ -56,7 +56,7 @@ final class Length private (val value: Double, val unit: LengthUnit)
   def *(that: Conductivity): ElectricalConductance = Siemens(this.toMeters * that.toSiemensPerMeter)
   def *(that: ElectricalResistance): Resistivity = OhmMeters(this.toMeters * that.toOhms)
 
-  def /(that: TimeSquared): Acceleration = this / that.time1 / that.time2
+//  def /(that: TimeSquared): Acceleration = sys.error("Length / not implemented")
   def /(that: Acceleration): TimeSquared = (this / that.timeIntegrated) * time
 
   def squared = this * this
@@ -382,6 +382,8 @@ object LengthConversions {
     def toLength = Length(s)
   }
 
-  implicit object LengthNumeric extends AbstractQuantityNumeric[Length](Length.primaryUnit)
+  implicit object LengthNumeric extends AbstractQuantityNumeric[Length](Length.primaryUnit) {
+    def parseString(str: String): Option[Length] = sys.error("LengthNumeric parseString not implemented")
+  }
 }
 

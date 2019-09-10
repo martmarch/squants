@@ -91,5 +91,7 @@ object CapacitanceConversions {
     def kilofarads = Kilofarads(n)
   }
 
-  implicit object CapacitanceNumeric extends AbstractQuantityNumeric[Capacitance](Capacitance.primaryUnit)
+  implicit object CapacitanceNumeric extends AbstractQuantityNumeric[Capacitance](Capacitance.primaryUnit) {
+    def parseString(str: String): Option[Capacitance] = sys.error("CapacitanceNumeric parseString not implemented")
+  }
 }

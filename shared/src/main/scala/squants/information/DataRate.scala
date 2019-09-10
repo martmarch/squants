@@ -322,5 +322,7 @@ object DataRateConversions {
     def yobibitsPerSecond = YobibitsPerSecond(n)
   }
   
-  implicit object DataRateNumeric extends AbstractQuantityNumeric[DataRate](DataRate.primaryUnit)
+  implicit object DataRateNumeric extends AbstractQuantityNumeric[DataRate](DataRate.primaryUnit) {
+    def parseString(str: String): Option[DataRate] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

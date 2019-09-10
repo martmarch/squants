@@ -145,5 +145,7 @@ object PowerConversions {
     def toPower = Power(s)
   }
 
-  implicit object PowerNumeric extends AbstractQuantityNumeric[Power](Power.primaryUnit)
+  implicit object PowerNumeric extends AbstractQuantityNumeric[Power](Power.primaryUnit) {
+    def parseString(str: String): Option[Power] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

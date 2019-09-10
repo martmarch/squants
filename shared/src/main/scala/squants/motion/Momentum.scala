@@ -62,5 +62,7 @@ object MomentumConversions {
     def newtonSeconds = NewtonSeconds(n)
   }
 
-  implicit object MomentumNumeric extends AbstractQuantityNumeric[Momentum](Momentum.primaryUnit)
+  implicit object MomentumNumeric extends AbstractQuantityNumeric[Momentum](Momentum.primaryUnit) {
+    def parseString(str: String): Option[Momentum] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

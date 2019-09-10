@@ -59,5 +59,7 @@ object ChemicalAmountConversions {
     def poundMoles = PoundMoles(n)
   }
 
-  implicit object ChemicalAmountNumeric extends AbstractQuantityNumeric[ChemicalAmount](ChemicalAmount.primaryUnit)
+  implicit object ChemicalAmountNumeric extends AbstractQuantityNumeric[ChemicalAmount](ChemicalAmount.primaryUnit) {
+    def parseString(str: String): Option[ChemicalAmount] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

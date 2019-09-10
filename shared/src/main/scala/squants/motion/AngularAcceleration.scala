@@ -30,7 +30,7 @@ final class AngularAcceleration private (val value: Double, val unit: AngularAcc
     * @param radius the distance from the center of rotation
     * @return linear acceleration with given angular acceleration and radius
     */
-  def onRadius(radius: Length): Acceleration = toRadiansPerSecondSquared * radius / Seconds(1).squared
+  def onRadius(radius: Length): Acceleration = sys.error("AngularAcceleration onRadius not implemented")//toRadiansPerSecondSquared * radius / Seconds(1).squared
 
 
   def *(that: MomentOfInertia): Torque = {
@@ -108,5 +108,7 @@ object AngularAccelerationConversions {
     def turnsPerSecondSquared(implicit num: Numeric[A]) = TurnsPerSecondSquared(n)
   }
 
-  implicit object AngularAccelerationNumeric extends AbstractQuantityNumeric[AngularAcceleration](AngularAcceleration.primaryUnit)
+  implicit object AngularAccelerationNumeric extends AbstractQuantityNumeric[AngularAcceleration](AngularAcceleration.primaryUnit) {
+    def parseString(str: String): Option[AngularAcceleration] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

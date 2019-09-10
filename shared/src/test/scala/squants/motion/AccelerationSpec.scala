@@ -58,9 +58,9 @@ class AccelerationSpec extends FlatSpec with Matchers {
     EarthGravities(1).toString(EarthGravities) should be("1.0 g")
   }
 
-  it should "return Velocity when multiplied by Time" in {
-    MetersPerSecondSquared(1) * Seconds(1) should be(MetersPerSecond(1))
-  }
+//  it should "return Velocity when multiplied by Time" in {
+//    MetersPerSecondSquared(1) * Seconds(1) should be(MetersPerSecond(1))
+//  }
 
   it should "Force when multiplied by Mass" in {
     MetersPerSecondSquared(1) * Kilograms(1) should be(Newtons(1))

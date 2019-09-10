@@ -523,5 +523,7 @@ object MoneyConversions {
       * @return String representation of this instance
       */
     override def toString: String = s"MoneyNumeric($mc)"
+
+    def parseString(str: String): Option[Money] = sys.error("MoneyNumeric parseString")
   }
 }

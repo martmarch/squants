@@ -44,5 +44,7 @@ object MolarEnergyConversions {
     def joulesPerMole = JoulesPerMole(n)
   }
 
-  implicit object MolarEnergyNumeric extends AbstractQuantityNumeric[MolarEnergy](MolarEnergy.primaryUnit)
+  implicit object MolarEnergyNumeric extends AbstractQuantityNumeric[MolarEnergy](MolarEnergy.primaryUnit) {
+    def parseString(str: String): Option[MolarEnergy] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

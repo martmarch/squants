@@ -62,5 +62,7 @@ object PermeabilityConversions {
     def newtonsPerAmperesSquared = NewtonsPerAmperesSquared(n)
   }
 
-  implicit object PermeabilityNumeric extends AbstractQuantityNumeric[Permeability](Permeability.primaryUnit)
+  implicit object PermeabilityNumeric extends AbstractQuantityNumeric[Permeability](Permeability.primaryUnit) {
+    def parseString(str: String): Option[Permeability] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

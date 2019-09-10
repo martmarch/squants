@@ -86,5 +86,7 @@ object MassFlowConversions {
     def megapoundsPerHour = MegapoundsPerHour(n)
   }
 
-  implicit object MassFlowNumeric extends AbstractQuantityNumeric[MassFlow](MassFlow.primaryUnit)
+  implicit object MassFlowNumeric extends AbstractQuantityNumeric[MassFlow](MassFlow.primaryUnit) {
+    def parseString(str: String): Option[MassFlow] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

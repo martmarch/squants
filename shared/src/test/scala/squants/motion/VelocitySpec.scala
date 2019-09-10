@@ -76,9 +76,9 @@ class VelocitySpec extends FlatSpec with Matchers {
     MetersPerSecond(1) * Kilograms(1) should be(NewtonSeconds(1))
   }
 
-  it should "return Acceleration when divided by Time" in {
-    MetersPerSecond(1) / Seconds(1) should be(MetersPerSecondSquared(1))
-  }
+//  it should "return Acceleration when divided by Time" in {
+//    MetersPerSecond(1) / Seconds(1) should be(MetersPerSecondSquared(1))
+//  }
 
   it should "return a dimensionless ration when divided by an Acceleration" in {
     MetersPerSecond(10) / MetersPerSecond(4) should be(2.5)

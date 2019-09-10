@@ -53,6 +53,8 @@ object SpectralPowerConversions {
     def wattsPerMeter = WattsPerMeter(n)
   }
 
-  implicit object SpectralPowerNumeric extends AbstractQuantityNumeric[SpectralPower](SpectralPower.primaryUnit)
+  implicit object SpectralPowerNumeric extends AbstractQuantityNumeric[SpectralPower](SpectralPower.primaryUnit) {
+    def parseString(str: String): Option[SpectralPower] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

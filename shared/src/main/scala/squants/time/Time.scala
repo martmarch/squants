@@ -141,7 +141,9 @@ object TimeConversions {
     def toTime = Time(s)
   }
 
-  implicit object TimeNumeric extends AbstractQuantityNumeric[Time](Time.primaryUnit)
+  implicit object TimeNumeric extends AbstractQuantityNumeric[Time](Time.primaryUnit) {
+    def parseString(str: String): Option[Time] = sys.error("TimeNumeric parseString not implemented")
+  }
 
   /**
    * Converts a Squants Time to Scala Duration

@@ -70,5 +70,7 @@ object IrradianceConversions {
     def ergsPerSecondPerSquareCentimeter = ErgsPerSecondPerSquareCentimeter(n)
   }
 
-  implicit object IrradianceNumeric extends AbstractQuantityNumeric[Irradiance](Irradiance.primaryUnit)
+  implicit object IrradianceNumeric extends AbstractQuantityNumeric[Irradiance](Irradiance.primaryUnit) {
+    def parseString(str: String): Option[Irradiance] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

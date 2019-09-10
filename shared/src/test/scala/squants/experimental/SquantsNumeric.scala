@@ -140,7 +140,7 @@ object SquantsNumeric {
 
   implicit object IntIsSquantsNumeric extends IntIsSquantsNumeric with Ordering.IntOrdering
   implicit object LongIsSquantsNumeric extends LongIsSquantsNumeric with Ordering.LongOrdering
-  implicit object FloatIsSquantsNumeric extends FloatIsSquantsNumeric with Ordering.FloatOrdering
-  implicit object DoubleIsSquantsNumeric extends DoubleIsSquantsNumeric with Ordering.DoubleOrdering
+  implicit object FloatIsSquantsNumeric extends FloatIsSquantsNumeric with Ordering.Float.TotalOrdering
+  implicit object DoubleIsSquantsNumeric extends DoubleIsSquantsNumeric with Ordering.Double.TotalOrdering
   implicit object BigDecimalIsSquantsNumeric extends BigDecimalIsSquantsNumeric with Ordering.BigDecimalOrdering
 }

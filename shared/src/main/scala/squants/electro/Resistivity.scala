@@ -52,5 +52,7 @@ object ResistivityConversions {
     def ohmMeters = OhmMeters(n)
   }
 
-  implicit object ResistivityNumeric extends AbstractQuantityNumeric[Resistivity](Resistivity.primaryUnit)
+  implicit object ResistivityNumeric extends AbstractQuantityNumeric[Resistivity](Resistivity.primaryUnit) {
+    def parseString(str: String): Option[Resistivity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

@@ -35,12 +35,12 @@ object MotionChecks extends Properties("Motion") with QuantityChecks {
       MetersPerSecond(velocity) =~ Meters(velocity * time) / Seconds(time)
   }
 
-  property("Velocity = Acceleration * Time") = forAll(posNum, posNum) { (acc: TestData, time: TestData) ⇒
-    MetersPerSecond(acc * time) == MetersPerSecondSquared(acc) * Seconds(time) &&
-      MetersPerSecond(acc * time) == Seconds(time) * MetersPerSecondSquared(acc) &&
-      Seconds(time) =~ MetersPerSecond(acc * time) / MetersPerSecondSquared(acc) &&
-      MetersPerSecondSquared(acc) =~ MetersPerSecond(acc * time) / Seconds(time)
-  }
+//  property("Velocity = Acceleration * Time") = forAll(posNum, posNum) { (acc: TestData, time: TestData) ⇒
+//    MetersPerSecond(acc * time) == MetersPerSecondSquared(acc) * Seconds(time) &&
+//      MetersPerSecond(acc * time) == Seconds(time) * MetersPerSecondSquared(acc) &&
+//      Seconds(time) =~ MetersPerSecond(acc * time) / MetersPerSecondSquared(acc) &&
+//      MetersPerSecondSquared(acc) =~ MetersPerSecond(acc * time) / Seconds(time)
+//  }
 
   property("Acceleration = Jerk * Time") = forAll(posNum, posNum) { (jerk: TestData, time: TestData) ⇒
     MetersPerSecondSquared(jerk * time) == MetersPerSecondCubed(jerk) * Seconds(time) &&

@@ -98,11 +98,11 @@ class TimeSpec extends FlatSpec with Matchers {
     Days(1).toString(Days) should be("1.0 d")
   }
 
-  it should "return TimeIntegral when multiplied by a TimeDerivative" in {
-    Seconds(1) * MetersPerSecond(1) should be(Meters(1))
-    Seconds(1) * MetersPerSecondSquared(1) should be(MetersPerSecond(1))
-    Seconds(1) * MetersPerSecondCubed(1) should be(MetersPerSecondSquared(1))
-  }
+//  it should "return TimeIntegral when multiplied by a TimeDerivative" in {
+//    Seconds(1) * MetersPerSecond(1) should be(Meters(1))
+//    Seconds(1) * MetersPerSecondSquared(1) should be(MetersPerSecond(1))
+//    Seconds(1) * MetersPerSecondCubed(1) should be(MetersPerSecondSquared(1))
+//  }
 
   it should "return AreaTime when multiplied by an Area" in {
     Seconds(1) * SquareMeters(1) should be(SquareMeterSeconds(1))

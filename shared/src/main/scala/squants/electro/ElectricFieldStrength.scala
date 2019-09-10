@@ -44,5 +44,7 @@ object ElectricFieldStrengthConversions {
     def voltsPerMeter = VoltsPerMeter(n)
   }
 
-  implicit object ElectricFieldStrengthNumeric extends AbstractQuantityNumeric[ElectricFieldStrength](ElectricFieldStrength.primaryUnit)
+  implicit object ElectricFieldStrengthNumeric extends AbstractQuantityNumeric[ElectricFieldStrength](ElectricFieldStrength.primaryUnit) {
+    def parseString(str: String): Option[ElectricFieldStrength] = sys.error("ElectricFieldStrengthNumeric parseString not implemented")
+  }
 }

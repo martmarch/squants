@@ -50,6 +50,8 @@ object LuminanceConversions {
     def candelasPerSquareMeter = CandelasPerSquareMeter(n)
   }
 
-  implicit object LuminanceNumeric extends AbstractQuantityNumeric[Luminance](Luminance.primaryUnit)
+  implicit object LuminanceNumeric extends AbstractQuantityNumeric[Luminance](Luminance.primaryUnit) {
+    def parseString(str: String): Option[Luminance] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

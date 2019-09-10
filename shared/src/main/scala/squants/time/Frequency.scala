@@ -45,7 +45,7 @@ final class Frequency private (val value: Double, val unit: FrequencyUnit)
   def *(that: Momentum): Force = that * this
   def *(that: Power): PowerRamp = that * this
   def *(that: Pressure): PressureChange = that * this
-  def *(that: Velocity): Acceleration = that * this
+  def *(that: Velocity): Acceleration = sys.error("Frequency * not implemented")
   def *(that: Volume): VolumeFlow = that * this
 
   def toHertz = to(Hertz)
@@ -108,5 +108,7 @@ object FrequencyConversions {
     def rpm = RevolutionsPerMinute(n)
   }
 
-  implicit object FrequencyNumeric extends AbstractQuantityNumeric[Frequency](Frequency.primaryUnit)
+  implicit object FrequencyNumeric extends AbstractQuantityNumeric[Frequency](Frequency.primaryUnit) {
+    def parseString(str: String): Option[Frequency] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

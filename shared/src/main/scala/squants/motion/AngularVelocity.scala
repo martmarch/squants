@@ -99,5 +99,7 @@ object AngularVelocityConversions {
     def turnsPerSecond = TurnsPerSecond(n)
   }
 
-  implicit object AngularVelocityNumeric extends AbstractQuantityNumeric[AngularVelocity](AngularVelocity.primaryUnit)
+  implicit object AngularVelocityNumeric extends AbstractQuantityNumeric[AngularVelocity](AngularVelocity.primaryUnit) {
+    def parseString(str: String): Option[AngularVelocity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

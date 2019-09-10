@@ -109,5 +109,7 @@ object PowerRampConversions {
     def toPowerRamp = PowerRamp(s)
   }
 
-  implicit object PowerRampNumeric extends AbstractQuantityNumeric[PowerRamp](PowerRamp.primaryUnit)
+  implicit object PowerRampNumeric extends AbstractQuantityNumeric[PowerRamp](PowerRamp.primaryUnit) {
+    def parseString(str: String): Option[PowerRamp] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

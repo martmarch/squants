@@ -44,5 +44,7 @@ object ElectricChargeMassRatioConversions {
     def coulombsPerKilogram = CoulombsPerKilogram(n)
   }
 
-  implicit object ElectricChargeMassRatioNumeric extends AbstractQuantityNumeric[ElectricChargeMassRatio](ElectricChargeMassRatio.primaryUnit)
+  implicit object ElectricChargeMassRatioNumeric extends AbstractQuantityNumeric[ElectricChargeMassRatio](ElectricChargeMassRatio.primaryUnit) {
+    def parseString(str: String): Option[ElectricChargeMassRatio] = sys.error("ElectricChargeMassRatioNumeric parseString not implemented")
+  }
 }

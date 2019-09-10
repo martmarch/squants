@@ -72,5 +72,7 @@ object ActivityConversions {
   }
 
   implicit object ActivityNumeric 
-      extends AbstractQuantityNumeric[Activity](Activity.primaryUnit)
+      extends AbstractQuantityNumeric[Activity](Activity.primaryUnit) {
+    def parseString(str: String): Option[Activity] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }

@@ -357,5 +357,7 @@ object InformationConversions {
     def toInformation = Information(s)
   }
 
-  implicit object InformationNumeric extends AbstractQuantityNumeric[Information](Information.primaryUnit)
+  implicit object InformationNumeric extends AbstractQuantityNumeric[Information](Information.primaryUnit) {
+    def parseString(str: String): Option[Information] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

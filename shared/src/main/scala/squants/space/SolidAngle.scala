@@ -57,6 +57,8 @@ object SolidAngleConversions {
     def steradians = SquaredRadians(n)
   }
 
-  implicit object SolidAngleNumeric extends AbstractQuantityNumeric[SolidAngle](SolidAngle.primaryUnit)
+  implicit object SolidAngleNumeric extends AbstractQuantityNumeric[SolidAngle](SolidAngle.primaryUnit) {
+    def parseString(str: String): Option[SolidAngle] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

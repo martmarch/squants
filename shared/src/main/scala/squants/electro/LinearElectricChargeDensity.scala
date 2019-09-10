@@ -45,5 +45,7 @@ object LinearElectricChargeDensityConversions {
     def coulombsPerMeter = CoulombsPerMeter(n)
   }
 
-  implicit object LinearElectricChargeDensityNumeric extends AbstractQuantityNumeric[LinearElectricChargeDensity](LinearElectricChargeDensity.primaryUnit)
+  implicit object LinearElectricChargeDensityNumeric extends AbstractQuantityNumeric[LinearElectricChargeDensity](LinearElectricChargeDensity.primaryUnit) {
+    def parseString(str: String): Option[LinearElectricChargeDensity] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

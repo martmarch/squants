@@ -66,5 +66,7 @@ object SpecificEnergyConversions {
     def ergsPerGram = ErgsPerGram(n)
   }
 
-  implicit object SpecificEnergyNumeric extends AbstractQuantityNumeric[SpecificEnergy](SpecificEnergy.primaryUnit)
+  implicit object SpecificEnergyNumeric extends AbstractQuantityNumeric[SpecificEnergy](SpecificEnergy.primaryUnit) {
+    def parseString(str: String): Option[SpecificEnergy] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

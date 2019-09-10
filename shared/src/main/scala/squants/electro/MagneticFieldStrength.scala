@@ -44,5 +44,7 @@ object MagneticFieldStrengthConversions {
     def amperesPerMeter = AmperesPerMeter(n)
   }
 
-  implicit object MagneticFieldStrengthNumeric extends AbstractQuantityNumeric[MagneticFieldStrength](MagneticFieldStrength.primaryUnit)
+  implicit object MagneticFieldStrengthNumeric extends AbstractQuantityNumeric[MagneticFieldStrength](MagneticFieldStrength.primaryUnit) {
+    def parseString(str: String): Option[MagneticFieldStrength] = sys.error("LinearElectricChargeDensityNumeric parseString not implemented")
+  }
 }

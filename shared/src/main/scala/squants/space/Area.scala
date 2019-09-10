@@ -156,5 +156,7 @@ object AreaConversions {
     def barnes = Barnes(n)
   }
 
-  implicit object AreaNumeric extends AbstractQuantityNumeric[Area](Area.primaryUnit)
+  implicit object AreaNumeric extends AbstractQuantityNumeric[Area](Area.primaryUnit) {
+    def parseString(str: String): Option[Area] = sys.error("AreaNumeric parseString not implemented")
+  }
 }

@@ -53,6 +53,8 @@ object RadianceConversions {
     def wattsPerSteradianPerSquareMeter = WattsPerSteradianPerSquareMeter(n)
   }
 
-  implicit object RadianceNumeric extends AbstractQuantityNumeric[Radiance](Radiance.primaryUnit)
+  implicit object RadianceNumeric extends AbstractQuantityNumeric[Radiance](Radiance.primaryUnit) {
+    def parseString(str: String): Option[Radiance] = sys.error("VelocityNumeric parseString not implemented")
+  }
 }
 

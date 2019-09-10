@@ -45,5 +45,7 @@ object ElectricCurrentDensityConversions {
     def amperesPerSquareMeter = AmperesPerSquareMeter(n)
   }
 
-  implicit object ElectricCurrentDensityNumeric extends AbstractQuantityNumeric[ElectricCurrentDensity](ElectricCurrentDensity.primaryUnit)
+  implicit object ElectricCurrentDensityNumeric extends AbstractQuantityNumeric[ElectricCurrentDensity](ElectricCurrentDensity.primaryUnit) {
+    def parseString(str: String): Option[ElectricCurrentDensity] = sys.error("ElectricCurrentDensityNumeric parseString not implemented")
+  }
 }

@@ -53,5 +53,7 @@ object ElectricalConductanceConversions {
     def siemens = Siemens(n)
   }
 
-  implicit object ElectricalConductanceNumeric extends AbstractQuantityNumeric[ElectricalConductance](ElectricalConductance.primaryUnit)
+  implicit object ElectricalConductanceNumeric extends AbstractQuantityNumeric[ElectricalConductance](ElectricalConductance.primaryUnit) {
+    def parseString(str: String): Option[ElectricalConductance] =  sys.error("ElectricalConductanceNumeric parseString not implemented")
+  }
 }
